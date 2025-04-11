@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>신선의 숨결: 육성 시뮬레이션</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; background: #f5f5f5; }
+    button { font-size: 18px; padding: 10px 20px; margin: 10px; }
+    #status { margin-top: 20px; font-size: 20px; }
+    #character { width: 200px; transition: 0.5s; }
+  </style>
+</head>
+<body>
+  <h1>🌸 신선의 숨결 🌸</h1>
+  <img id="character" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/NPC_example.png">
+  
+  <div id="status">체력: 100 | 신성도: 0 | 숙련도: 0</div>
+
+  <div>
+    <button onclick="doQuest('연꽃에 물주기')">🌿 연꽃에 물주기</button>
+    <button onclick="doQuest('도장받기')">🌸 도장 받기</button>
+  </div>
+
+  <script>
+    let health = 100;
+    let power = 0;
+    let skill = 0;
+
+    function doQuest(action) {
+      if (action === "연꽃에 물주기") {
+        power += 10;
+        skill += 5;
+        health -= 5;
+        document.getElementById("character").src = "https://upload.wikimedia.org/wikipedia/commons/3/3f/NPC_example2.png";
+      } else if (action === "도장받기") {
+        power += 5;
+        skill += 15;
+        health -= 10;
+        document.getElementById("character").src = "https://upload.wikimedia.org/wikipedia/commons/4/4c/NPC_example3.png";
+      }
+
+      if (power >= 30 && skill >= 30) {
+        document.getElementById("character").src = "https://upload.wikimedia.org/wikipedia/commons/5/5e/NPC_example4.png";
+        alert("✨ 신선의 도장을 받았습니다!");
+      }
+
+      document.getElementById("status").innerText = `체력: ${health} | 신성도: ${power} | 숙련도: ${skill}`;
+    }
+  </script>
+</body>
+</html>
